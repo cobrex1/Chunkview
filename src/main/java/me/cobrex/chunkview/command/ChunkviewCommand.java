@@ -34,7 +34,7 @@ public class ChunkviewCommand implements CommandExecutor, TabCompleter {
 		}
 
 		Player player = (Player) sender;
-		if (!sender.hasPermission("chunkview.view")) {//|| sender.isOp()) { //|| !this.plugin.getConfig().getBoolean("requiresop")) {
+		if (!sender.hasPermission("chunkview.view")) {
 			sender.sendMessage((ChatColor.RED + "You don't have permission to use this command"));
 
 			return true;
