@@ -52,13 +52,17 @@ public class PlayerListener implements Listener {
 						corner3 = chunk.getBlock(15 - i2, i, 15).getLocation();
 						corner4 = chunk.getBlock(0, i, 15 - i2).getLocation();
 						if (corner1.getBlock().getType() == Material.AIR)
-							player.sendBlockChange(corner1, Material.AIR, (byte) 0);
+							player.sendBlockChange(corner1, Material.AIR.createBlockData());
+//							player.sendBlockChange(corner1, Material.AIR, (byte) 0);
 						if (corner2.getBlock().getType() == Material.AIR)
-							player.sendBlockChange(corner2, Material.AIR, (byte) 0);
+							player.sendBlockChange(corner2, Material.AIR.createBlockData());
+//							player.sendBlockChange(corner2, Material.AIR, (byte) 0);
 						if (corner3.getBlock().getType() == Material.AIR)
-							player.sendBlockChange(corner3, Material.AIR, (byte) 0);
+							player.sendBlockChange(corner3, Material.AIR.createBlockData());
+//							player.sendBlockChange(corner3, Material.AIR, (byte) 0);
 						if (corner4.getBlock().getType() == Material.AIR)
-							player.sendBlockChange(corner4, Material.AIR, (byte) 0);
+							player.sendBlockChange(corner4, Material.AIR.createBlockData());
+//							player.sendBlockChange(corner4, Material.AIR, (byte) 0);
 					}
 				}
 

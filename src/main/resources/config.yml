@@ -1,2 +1,10 @@
 # Chunkview config file.
 requiresop: false
+
+#Get Particle names from: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Particle.html
+particle:
+  type: "VILLAGER_HAPPY"
+
+#Get Material names from: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
+block:
+  type: "REDSTONE_TORCH"

@@ -8,15 +8,10 @@ import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-import java.util.List;
-
-public class ChunkviewCommand implements CommandExecutor, TabCompleter {
-
-	private Plugin instance;
+public class ChunkviewCommand implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -27,13 +22,14 @@ public class ChunkviewCommand implements CommandExecutor, TabCompleter {
 			return true;
 		}
 
-		if (args.length == 0) {
-			sender.sendMessage((ChatColor.RED + "Usage: /chunkview"));
-
-			return true;
-		}
+//		if (args.length == 0) {
+//			sender.sendMessage((ChatColor.RED + "Usage: /chunkv"));
+//
+//			return true;
+//		}
 
 		Player player = (Player) sender;
+		Plugin plugin = Chunkview.getPlugin(Chunkview.class);
 		if (!sender.hasPermission("chunkview.view")) {
 			sender.sendMessage((ChatColor.RED + "You don't have permission to use this command"));
 
@@ -41,8 +37,14 @@ public class ChunkviewCommand implements CommandExecutor, TabCompleter {
 		} else {
 
 //			new BukkitRunnable() {
+//				int count = 0;
+//
 //				@Override
 //				public void run() {
+//					if (count >= 5) {
+//						cancel();
+//					}
+//					count++;
 
 			Chunkview.viewers.add(player);
 			Chunkview.viewerslocs.add(player.getLocation());
@@ -63,27 +65,28 @@ public class ChunkviewCommand implements CommandExecutor, TabCompleter {
 				corner3 = chunk.getBlock(15 - i2, i, 15).getLocation();
 				corner4 = chunk.getBlock(0, i, 15 - i2).getLocation();
 				if (corner1.getBlock().getType() == Material.AIR)
-					player.sendBlockChange(corner1, Material.SEA_LANTERN, (byte) 0);
+					player.sendBlockChange(corner1, Material.valueOf(plugin.getConfig().getString("block.type")).createBlockData());
 				if (corner2.getBlock().getType() == Material.AIR)
-					player.sendBlockChange(corner2, Material.SEA_LANTERN, (byte) 0);
+					player.sendBlockChange(corner2, Material.valueOf(plugin.getConfig().getString("block.type")).createBlockData());
 				if (corner3.getBlock().getType() == Material.AIR)
-					player.sendBlockChange(corner3, Material.SEA_LANTERN, (byte) 0);
+					player.sendBlockChange(corner3, Material.valueOf(plugin.getConfig().getString("block.type")).createBlockData());
 				if (corner4.getBlock().getType() == Material.AIR)
-					player.sendBlockChange(corner4, Material.SEA_LANTERN, (byte) 0);
+					player.sendBlockChange(corner4, Material.valueOf(plugin.getConfig().getString("block.type")).createBlockData());
 
 			}
-
-//				}
+		}
 
 //			}.runTaskAsynchronously(Chunkview.instance);
-		}
+
 		sender.sendMessage(ChatColor.GOLD + "Boarder blocks now showing. Toggle sneak to remove");
 		return true;
 
 	}
 
-	@Override
-	public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
-		return null;
-	}
+//	@Override
+//	public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+//		return null;
+//	}
 }
+
+
