@@ -45,35 +45,35 @@ public final class Chunkview extends JavaPlugin implements Listener {
 		if (label.equalsIgnoreCase("chunkview")) {
 			if (sender instanceof Player) {
 				if (!sender.hasPermission("chunkview.reload")) {
-					sender.sendMessage((ChatColor.RED + "You don't have permission to use this command"));
+					sender.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("lang.messages.reload_permission")));
 					return true;
 				}
 				if (args.length == 0) {
-					sender.sendMessage(ChatColor.RED + "Usage: /chunkview reload");
+					sender.sendMessage((ChatColor.translateAlternateColorCodes('&', getConfig().getString("lang.messages.reload_error"))));
 					return true;
 				}
 				if (args.length > 0) {
 					if (args[0].equalsIgnoreCase("reload")) {
-						sender.sendMessage((ChatColor.RED + "Configuration file reloaded"));
+						sender.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("lang.messages.reloaded")));
 						this.reloadConfig();
 						this.saveDefaultConfig();
 					} else {
-						sender.sendMessage(ChatColor.RED + "Usage: /chunkview reload");
+						sender.sendMessage((ChatColor.translateAlternateColorCodes('&', getConfig().getString("lang.messages.reload_error"))));
 						return true;
 					}
 				}
 			} else {
 				if (args.length == 0) {
-					sender.sendMessage(ChatColor.RED + "Usage: /chunkview reload");
+					sender.sendMessage((ChatColor.translateAlternateColorCodes('&', getConfig().getString("lang.messages.reload_error"))));
 					return true;
 				}
 				if (args.length > 0) {
 					if (args[0].equalsIgnoreCase("reload")) {
-						sender.sendMessage((ChatColor.RED + "Plugin reloaded"));
+						sender.sendMessage((ChatColor.translateAlternateColorCodes('&', getConfig().getString("lang.messages.reloaded"))));
 						this.reloadConfig();
 						this.saveDefaultConfig();
 					} else {
-						sender.sendMessage(ChatColor.RED + "Usage: /chunkview reload");
+						sender.sendMessage((ChatColor.translateAlternateColorCodes('&', getConfig().getString("lang.messages.reload_error"))));
 						return true;
 					}
 				}

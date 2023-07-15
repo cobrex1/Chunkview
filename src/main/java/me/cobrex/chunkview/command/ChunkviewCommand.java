@@ -22,29 +22,13 @@ public class ChunkviewCommand implements CommandExecutor {
 			return true;
 		}
 
-//		if (args.length == 0) {
-//			sender.sendMessage((ChatColor.RED + "Usage: /chunkv"));
-//
-//			return true;
-//		}
-
 		Player player = (Player) sender;
 		Plugin plugin = Chunkview.getPlugin(Chunkview.class);
 		if (!sender.hasPermission("chunkview.view")) {
-			sender.sendMessage((ChatColor.RED + "You don't have permission to use this command"));
+			player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("lang.messages.reload_permission")));
 
 			return true;
 		} else {
-
-//			new BukkitRunnable() {
-//				int count = 0;
-//
-//				@Override
-//				public void run() {
-//					if (count >= 5) {
-//						cancel();
-//					}
-//					count++;
 
 			Chunkview.viewers.add(player);
 			Chunkview.viewerslocs.add(player.getLocation());
@@ -76,17 +60,10 @@ public class ChunkviewCommand implements CommandExecutor {
 			}
 		}
 
-//			}.runTaskAsynchronously(Chunkview.instance);
-
-		sender.sendMessage(ChatColor.GOLD + "Boarder blocks now showing. Toggle sneak to remove");
+		player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("lang.messages.blocks")));
 		return true;
 
 	}
-
-//	@Override
-//	public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
-//		return null;
-//	}
 }
 
 

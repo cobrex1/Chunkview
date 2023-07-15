@@ -8,3 +8,13 @@ particle:
 #Get Material names from: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
 block:
   type: "REDSTONE_TORCH"
+
+
+#Messages section
+lang:
+  messages:
+    reload_permission: "&cYou do not have permission to run the reload command."
+    reloaded: "&aPlugin files reloaded."
+    reload_error: "&cCorrect usage: /chunkview reload."
+    blocks: "&6Border blocks now showing. Toggle sneak to remove."
+    particles: "&6Border particles now showing."

@@ -2,7 +2,10 @@ package me.cobrex.chunkview.listener;
 
 import lombok.Getter;
 import me.cobrex.chunkview.Chunkview;
-import org.bukkit.*;
+import org.bukkit.Chunk;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -66,7 +69,7 @@ public class PlayerListener implements Listener {
 					}
 				}
 
-				player.sendMessage(ChatColor.GOLD + "Boarder blocks removed.");
+//				player.sendMessage(ChatColor.GOLD + "Boarder blocks removed.");
 				Chunkview.viewers.remove(player);
 				Chunkview.viewerslocs.remove(index);
 
